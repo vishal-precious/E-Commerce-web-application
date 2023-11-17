@@ -1,0 +1,16 @@
+<h1>Carts</h1>
+<div id="carts">
+  <% @cart_items.each do |cart_item| %>
+    <div class="card" style="width: 18rem;">
+    <img src="https://atlasware.in/cdn/shop/products/Weblist_23_1200x.jpg?v=1649502794" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= cart_item.product.name %></h5>
+      <p class="card-text"><%= cart_item.product.brand %></p>
+      <p class="card-text"><%= cart_item.product.price %></p>
+      <p class="card-text"><%= cart_item.product.description %></p>
+      <%= link_to "Remove Product", removeproduct_path(cart_item.id), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
