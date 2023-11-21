@@ -1,11 +1,13 @@
 class CartsController < ApplicationController
   def index
-    @cart_items = current_user.carts.first.cart_items
+    if current_user.carts.present?
+      @cart_items = current_user.carts.first.cart_items
+    end
   end
 
   def addproduct
     if current_user.carts.present?
-      @cart_item = current_user.carts.cart_items.new(product_id: params[:id])
+      @cart_item = current_user.carts.first.cart_items.new(product_id: params[:id])
     else
       cart = current_user.carts.create
       @cart_item = cart.cart_items.new(product_id: params[:id])
