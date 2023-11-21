@@ -5,10 +5,10 @@ class CartsController < ApplicationController
 
   def addproduct
     if current_user.carts.present?
-      @cart_item = current_user.carts.first.cart_items.new(product_id: params[:id])
+      @cart_item = current_user.carts.cart_items.new(product_id: params[:id])
     else
       cart = current_user.carts.create
-      @cart_item = cart.first.cart_items.new(product_id: params[:id])
+      @cart_item = cart.cart_items.new(product_id: params[:id])
     end
     @cart_item.save 
     redirect_to carts_path

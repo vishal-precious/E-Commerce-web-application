@@ -1,0 +1,11 @@
+<%= form_tag "/checkout", id="payment_form" do %>
+  <label>Card Details</label>
+  <input type="text" id="card_number" placeholder="Card Number"><br>
+  <input type="text" id="card_expiry" placeholder="MM/YY"><br>
+  <input type="text" id="card_cvc" placeholder="CVC"><br>
+
+  <input type="hidden" id="product_price" value="10000"> <!-- Example price in cents -->
+  <input type="hidden" id="stripeToken" name="stripeToken"><br>
+
+  <button id="stripe-submit">Pay</button>
+<% end %>

@@ -9,6 +9,7 @@
       <p class="card-text"><%= cart_item.product.price %></p>
       <p class="card-text"><%= cart_item.product.description %></p>
       <%= link_to "Remove Product", removeproduct_path(cart_item.id), class: "btn btn-primary" %>
+      <%= link_to "Buy", new_checkout_path, params: [id: cart_item.product.id], method: :get, id: "checkout-button", class: "btn btn-primary" %>
     </div>
   </div>
   <% end %>
