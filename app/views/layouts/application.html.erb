@@ -57,7 +57,15 @@
               <%= link_to "Products", products_path, class: "nav-link active" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Cart", carts_path, class: "nav-link active" %>
+              <%= link_to "Sell", user_details_seller_path, class: "nav-link active" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Sell Product", new_product_path, class: "nav-link active" %>
+            </li>
+            <li class="nav-item">
+              <% if user_signed_in? %>
+                <%= link_to "Cart", carts_path, class: "nav-link active" %>
+              <% end %>  
             </li>
             <li class="nav-item">
               <%= link_to "Customer Service", carts_path, class: "nav-link active" %>
