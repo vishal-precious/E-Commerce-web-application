@@ -6,14 +6,14 @@
   <% @products.each do |product| %>
     <div class="card" style="width: 18rem;">
     <% if product.image.attached? %>
-      <%= image_tag product.image %>
+      <image src='<%=  image_path(url_for(product.image)) %>'>
     <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= product.name %></h5>
-      <p class="card-text"><%= product.brand %></p>
-      <p class="card-text"><%= product.price %></p>
-      <p class="card-text"><%= product.description %></p>
-      <%= link_to "AddToCart", addproduct_path(product.id), class: "btn btn-primary" %>
+    <h5 class="card-title">Brand : <%= product.brand %></h5>
+    <p class="card-text">Name : <%= product.name %></p>
+      <p class="card-text">Price : <%= product.price %></p>
+      <p class="card-text">Description : <%= product.description %></p>
+      <%= link_to "Shop Now", product_path(product.id), class: "btn btn-primary" %>
     </div>
   </div>
   <% end %>
