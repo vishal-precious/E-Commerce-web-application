@@ -5,7 +5,9 @@
 <div id="products">
   <% @products.each do |product| %>
     <div class="card" style="width: 18rem;">
-    <img src="https://atlasware.in/cdn/shop/products/Weblist_23_1200x.jpg?v=1649502794" class="card-img-top" alt="...">
+    <% if product.image.attached? %>
+      <%= image_tag product.image %>
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= product.name %></h5>
       <p class="card-text"><%= product.brand %></p>
