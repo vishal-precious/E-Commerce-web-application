@@ -1,24 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @product.name %>
+  <% if @product.image.attached? %>
+    <image src='<%= image_path(url_for(@product.image)) %>'>
+  <% end %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <h1><strong>Name:</strong>
+  <%= @product.name %></h1>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <h1><strong>Price:</strong>
+  <%= @product.price %></h1>
 </p>
 
 <p>
-  <strong>Brand:</strong>
-  <%= @product.brand %>
+  <h1><strong>Description:</strong>
+  <%= @product.description %></h1>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<p>
+  <h1><strong>Brand:</strong>
+  <%= @product.brand %></h1>
+</p>
+
+<%= link_to "AddToCart", addproduct_path(@product.id), class: "btn btn-primary" %>
+
+<% if current_user&.user_detail.present? && current_user&.user_detail&.role.eql?("seller") %>
+  <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %> 
+<% end %>
