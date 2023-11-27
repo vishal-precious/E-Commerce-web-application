@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :products, :carts
   resources :checkout, only: [:create, :new]
   resources :user_details, only: [:create, :new]
+  resources :product_review, only: [:show, :create, :new]
+
   get "/user_details/seller", to: "user_details#index", as: "user_details_seller"
   devise_for :users
   root to: "homes#index"
