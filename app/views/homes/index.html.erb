@@ -3,7 +3,9 @@
 <div id="products">
   <% @products.each do |product| %>
     <div class="card" style="width: 18rem;">
-    <img src="" class="card-img-top" alt="...">
+    <% if product.image.attached? %>
+      <image src='<%=  image_path(url_for(product.image)) %>'>
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= product.name %></h5>
       <p class="card-text"><%= product.brand %></p>

@@ -3,7 +3,9 @@
 <div id="carts">
   <% @cart_items.each do |cart_item| %>
     <div class="card" style="width: 18rem;">
-    <img src="https://atlasware.in/cdn/shop/products/Weblist_23_1200x.jpg?v=1649502794" class="card-img-top" alt="...">
+    <% if product.image.attached? %>
+      <image src='<%=  image_path(url_for(product.image)) %>'>
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= cart_item.product.name %></h5>
       <p class="card-text"><%= cart_item.product.brand %></p>

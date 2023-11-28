@@ -2,7 +2,7 @@
 
 <p>
   <% if @product.image.attached? %>
-    <image src='<%= image_path(url_for(@product.image)) %>'>
+    <image src='<%= image_path(url_for(@product.image)) %>' height="500px", width="500px">
   <% end %>
 </p>
 
@@ -26,7 +26,9 @@
   <%= @product.brand %></h1>
 </p>
 
-<%= link_to "AddToCart", addproduct_path(@product.id), class: "btn btn-primary" %>
+<% if current_user&.user_detail.present? && current_user&.user_detail&.role.eql?("buyer") %>
+  <%= link_to "AddToCart", addproduct_path(@product.id), class: "btn btn-primary" %>
+<% end %>
 
 <% if current_user&.user_detail.present? && current_user&.user_detail&.role.eql?("seller") %>
   <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %> 

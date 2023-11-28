@@ -1,7 +1,7 @@
 class ProductReviewController < ApplicationController
 
   def show 
-    ProductReview.find_by(product_id: params[])
+    ProductReview.find_by(product_id: params[:id])
   end
 
   def new 
