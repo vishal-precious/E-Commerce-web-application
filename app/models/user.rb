@@ -8,5 +8,15 @@ class User < ApplicationRecord
   has_many :products 
   has_many :carts
   has_one :user_detail
-  has_many :order
+  has_many :orders
+  has_many :cards
+  has_many :payments
+
+  after_create :assign_customer_id
+ 
+  def assign_customer_id
+    user = User.last
+    customer = Stripe::Customer.create(email: user.email)
+    UserDetail.create(stripe_customer_id: customer.id, user_id: user.id)
+  end
 end

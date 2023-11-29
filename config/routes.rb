@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   get '/addproduct/:id', to: "carts#addproduct", as: "addproduct"
   get '/removeproduct/:id', to: "carts#removeproduct", as: "removeproduct"
 
-  resources :products, :carts
-  resources :checkout, only: [:create, :new]
+  resources :products, :carts, :cards, :payment
   resources :user_details, only: [:create, :new]
   resources :product_review, only: [:show, :create, :new]
 
   get "/user_details/seller", to: "user_details#index", as: "user_details_seller"
   devise_for :users
   root to: "homes#index"
+
+  mount StripeEvent::Engine, at: '/payments'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -34,6 +34,6 @@
   <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %> 
 <% end %>
 
-<% if current_user&.order.find_by(product_id: @product.id)&.present? %>
+<% if current_user&.order&.find_by(product_id: @product.id)&.present? %>
   <%= link_to "Post Review", new_product_review_path, params[id: @product.id] %>
 <% end %>
